@@ -14,11 +14,11 @@ module.exports = function (app) {
     title: '0x51 - LON position',
     keys: ['navigation.position'],
     f: function f_0x51 (position) {
-      XX = toHexString(parseInt(position.longitude))
+      XX = stalk.toHexString(parseInt(position.longitude))
       YYYY = parseInt(100*position.longitude-parseInt(position.longitude)) & 0x7FFF
       if (position.longitude>0) YYYY = YYYY | 0x8000
-      YYYY = toHexString(YYYY)
-      return stalk.toSentence(['STALK', '51', 'A2', XX, YYYY.substring(0,2), YYYY.substring(2)])
+      YYYY = stalk.toHexString(YYYY)
+      return stalk.toDatagram(['51', 'A2', XX, YYYY.substring(0,2), YYYY.substring(2)])
     }
   }
 }
