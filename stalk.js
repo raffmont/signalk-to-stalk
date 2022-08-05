@@ -47,6 +47,5 @@ function padd (n, p, c) {
 }
 
 module.exports = {
-  toDatagram: toDatagram,
-  radsToDeg: radsToDeg
+  toDatagram: toDatagram
 }
