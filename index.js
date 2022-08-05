@@ -3,7 +3,6 @@ const {
   toDatagram,
   computeChecksum,
   toHexString,
-  radsToDeg,
   padd
 } = require('./stalk')
 const path = require('path')
@@ -31,6 +30,7 @@ module.exports = function (app) {
     const selfMatcher = delta => delta.context && delta.context === selfContext
 
     function mapToStalk (encoder, throttle) {
+	    app.debug(encoder.datagram)
       const selfStreams = encoder.keys.map((key, index) => {
         let stream = app.streambundle.getSelfStream(key)
         if (encoder.defaults && typeof encoder.defaults[index] != 'undefined') {
