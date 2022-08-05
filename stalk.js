@@ -47,5 +47,7 @@ function padd (n, p, c) {
 }
 
 module.exports = {
-  toDatagram: toDatagram
+  toDatagram: toDatagram,
+  toHexString: toHexString,
+  padd: padd
 }
