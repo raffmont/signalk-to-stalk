@@ -1,11 +1,10 @@
 const Bacon = require('baconjs')
 const {
-  toSentence,
+  toDatagram,
   computeChecksum,
   toHexString,
   radsToDeg,
-  padd,
-  toNmeaDegrees
+  padd
 } = require('./stalk')
 const path = require('path')
 const fs = require('fs')
@@ -39,7 +38,7 @@ module.exports = function (app) {
         }
         return stream
       }, app.streambundle)
-      const sentenceEvent = encoder.sentence ? `g${encoder.sentence}` : undefined
+      const sentenceEvent = encoder.datagram ? `g${encoder.datagram}` : undefined
 
       let stream = Bacon.combineWith(function () {
         try {
@@ -59,7 +58,7 @@ module.exports = function (app) {
       plugin.unsubscribes.push(
         stream
           .onValue(nmeaString => {
-            app.emit('stalkout', nmeaString)
+            app.emit('seatalkOut', nmeaString)
             if (sentenceEvent) {
               app.emit(sentenceEvent, nmeaString)
             }
