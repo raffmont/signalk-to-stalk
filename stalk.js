@@ -17,19 +17,19 @@ const m_hex = [
   'F'
 ]
 
-function toSentence (parts) {
+function toDatagram (parts) {
   var base = "$STALK,"+parts.join(',')
   return base + computeChecksum(base)
 }
 
-function computeChecksum (sentence) {
+function computeChecksum (datagram) {
   // skip the $
   let i = 1
   // init to first character
-  let c1 = sentence.charCodeAt(i)
+  let c1 = datagram.charCodeAt(i)
   // process rest of characters, zero delimited
-  for (i = 2; i < sentence.length; ++i) {
-    c1 = c1 ^ sentence.charCodeAt(i)
+  for (i = 2; i < datagram.length; ++i) {
+    c1 = c1 ^ datagram.charCodeAt(i)
   }
   return '*' + toHexString(c1)
 }
@@ -47,6 +47,6 @@ function padd (n, p, c) {
 }
 
 module.exports = {
-  toSentence: toSentence,
+  toDatagram: toDatagram,
   radsToDeg: radsToDeg
 }
