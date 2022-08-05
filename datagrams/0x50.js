@@ -7,13 +7,13 @@
 */
 // SeaTalk1 Encoder 0x50
 
-const nmea = require('../stalk.js')
+const stalk = require('../stalk.js')
 module.exports = function (app) {
   return {
     datagram: '0x50',
     title: '0x50 - LAT position',
     keys: ['navigation.position'],
-    f: function f_0x50 (position) {
+    f: function g0x50 (position) {
       XX = stalk.toHexString(parseInt(position.latitude))
       YYYY = parseInt(100*position.latitude-parseInt(position.latitude)) & 0x7FFF
       if (position.latitude<0) YYYY = YYYY | 0x8000
