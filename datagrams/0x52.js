@@ -10,9 +10,10 @@ module.exports = function (app) {
     title: '0x52 - Speed over Ground',
     keys: ['navigation.speedOverGround'],
     f: function g0x52 (sog) {
-      var sog10 = parseInt(Math.round(sog*1.944/10))
+      var sogKn = sog*1.944
+      var sog10 = parseInt(Math.round(sogKn*10))
       XXXX = stalk.padd(sog10.toString(16),4)
-      return stalk.toDatagram(['52', '01', XXXX.substring(0,2), XXXX.substring(2,4)])
+      return stalk.toDatagram(['52', '01', XXXX.substring(2,4), XXXX.substring(0,2)])
     }
   }
 }
