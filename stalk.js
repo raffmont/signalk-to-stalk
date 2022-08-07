@@ -46,8 +46,13 @@ function padd (n, p, c) {
   return (pad + n).slice(-pad.length)
 }
 
+function fmod(a,b) {
+  return Number((a-(Math.floor(a/b)*b)).toPrecision(8))
+}
+
 module.exports = {
   toDatagram: toDatagram,
   toHexString: toHexString,
-  padd: padd
+  padd: padd,
+  fmod: fmod
 }
