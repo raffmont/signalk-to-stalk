@@ -21,7 +21,7 @@ module.exports = function (app) {
       YYYY = minutes100 & 0x7FFF
       if (position.latitude<0) YYYY = YYYY | 0x8000
       YYYY = stalk.padd(YYYY.toString(16),4)
-      return stalk.toDatagram(['50', 'A2', XX, YYYY.substring(0,2), YYYY.substring(2,4)])
+      return stalk.toDatagram(['50', 'A2', XX, YYYY.substring(2,4), YYYY.substring(0,2)])
     }
   }
 }
